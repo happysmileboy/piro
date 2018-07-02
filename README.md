@@ -2,12 +2,14 @@
 mac : git-scm.com/downloads
 windows : gitforwindows.org
 
-#git 설정하기
+#git 설정
 1. 깃허브에 가입하기
 2. git config --global user.name "깃헙아이디"
    git config --global user.email example@domain.com
+3. 비밀번호 저장하기 : git config credential.helper store 
 
 
+#git 연결하기
 1. git init
 2. git remote add origin https://github.com/happysmileboy/"해당저장소이름"
 3. git pull origin master
@@ -20,8 +22,13 @@ windows : gitforwindows.org
 #브랜치 변경하기
 1. git checkout "브랜치 이름"
 
-#로컬과 깃헙 연결하기
-1. git 
+#로컬과 깃헙 연결하기 : 첫푸시를 해봅시당
+1. touch Readme.txt
+2. git status
+3. git add Readme.txt
+4. git commit -m "Add Readme.txt"
+5. git push (브랜치를 바꾸었기 때문에 에러가 뜰겁니다 에러를 고쳐봅시다)
+6. git push -u origin test
 
 #항상 풀부터 먼저 받는 습관을 가집시다.
 1. git pull
