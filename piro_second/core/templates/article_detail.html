@@ -22,14 +22,14 @@
             {% endfor %}
         </div>
         <a href="{% url 'core:article_list' %}" class="waves-effect waves-light btn">목록으로</a>
-
+        <a href="{% url 'core:article_update' article.pk %}" class="waves-effect waves-light btn">수정하기</a>
         <div class="comment_area">
             <h4>댓글</h4>
                 <div class="comment_form_area">
                     <form id="comment_form" method="POST">
                         {% csrf_token %}
                         <label for="author">글쓴이</label>
-                        <input type="text" name="author" /><br />
+                        <input type="text" name="author"><br />
                         {% if error.author %}
                           <p style="color: red;">글쓴이를 입력해주세요</p>
                         {% endif %}

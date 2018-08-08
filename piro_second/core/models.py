@@ -28,4 +28,3 @@ class Comment(models.Model):
     author = models.CharField(max_length=10, verbose_name='글쓴이')
     article = models.ForeignKey(Article, on_delete=models.CASCADE)
 
-

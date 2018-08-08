@@ -23,7 +23,6 @@ def article_list_tag(request, tag_pk=None):
     else:
         article_list = Article.objects.all()
         tag = None
-
     ctx = {
         'article_list': article_list,
         'tag_list': Tag.objects.all(),
@@ -39,28 +38,27 @@ def article_detail(request, pk):
         'article': article,
         'comments': comments,
     }
-
-    if request.method == 'POST':
+    if request.method == "POST":
         content = request.POST.get('content')
         author = request.POST.get('author')
 
         if content and author:
-            comment = Comment.objects.create(
+            Comment.objects.create(
                 article=article,
                 content=content,
-                author=author
+                author=author,
             )
             url = reverse('core:article_detail', kwargs={
                 'pk': article.pk
             })
             return redirect(url)
-
-        error_msg = {}
-        if not content:
-            error_msg.update({'content': '제목을 입력해주세요.'})
-        if not author:
-            error_msg.update({'author': '내용을 입력해주세요.'})
-        ctx.update({'error': error_msg, })
+        else:
+            error_msg = {}
+            if not content:
+                error_msg.update({'content': '제목을 입력해주세요.'})
+            if not author:
+                error_msg.update({'author': '내용을 입력해주세요.'})
+            ctx.update({'error': error_msg, })
 
     return render(request, 'article_detail.html', ctx)
 
@@ -89,3 +87,32 @@ def article_create(request):
             ctx.update({'error': error_msg, })
 
     return render(request, 'article_create.html', ctx)
+
+
+def article_update(request, pk):
+    article = get_object_or_404(Article, pk=pk)
+
+    title = article.title
+    content = article.content
+    if request.method == 'POST':
+        article.objects.save(
+            title=title,
+            content=content
+        )
+        url = reverse('core:article_detail', kwargs={
+            'pk': article.pk,
+        })
+        return redirect(url)
+    ctx = {
+        'article':article,
+        'title': title,
+        'content': content
+    }
+
+    return render(request, 'article_create.html', ctx)
+
+
+
+
+
+
