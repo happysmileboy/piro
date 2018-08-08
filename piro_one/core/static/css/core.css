@@ -1,0 +1,58 @@
+/*a {
+    display: inline-block;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: black;
+    border: 1px solid #eeeeee;
+    background-color: #f9f4f4;
+    border-radius: 30px;
+}
+a:hover, a:focus {
+    background-color: #e46868;
+    text-decoration: none;
+}*/
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+main {
+    flex: 1 0 auto;
+}
+
+.hidden {
+    display: none;
+}
+
+.fixed_width {
+    width: 1024px;
+    margin: auto;
+}
+
+.comment_area {
+    margin-top: 30px;
+}
+
+#like_button_wrapper {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.btn.liked, .btn.liked:hover, .btn.liked:focus {
+    font-weight: bold;
+    background-color: #a6265c;
+}
+
+.chip.selected {
+    background-color: #41e3da;
+}
+
+.btn.btn-block {
+    width: 100%;
+}
+
+#slide-out .background {
+    background-color: #832323;
+}
